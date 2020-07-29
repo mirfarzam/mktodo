@@ -2,20 +2,29 @@ import React, {Component} from 'react';
 import {observer} from 'mobx-react'
 import './App.css';
 import todoStore from "./stores/TodoStore";
+import TodoEntry from './components/TodoEntry'
 
 @observer
 class App extends Component {
     render() {
-        return [
-            <div id="todoapp" className="todoapp">
-                {/* your code here */}
-                <h1>Worked :)</h1>
-            </div>,
-            <footer className="info">
-                <p>Written by <a href="#">Your Name</a></p>
-                <p>Project of <a href="https://maktabkhooneh.org">Maktabkhooneh</a></p>
-            </footer>
-        ]
+        return (
+            <div className={"todoapp"} id={"todoapp"}>
+                <header className={"header"}>
+                    <h1>todo</h1>
+                    <input
+                        type={"text"}
+                        className={"new-todo"}
+                        placeholder={"What need to be done?"}
+                    />
+                </header>
+                <section className={"main"}>
+                    <ul className={"todo-list"}>
+                        <TodoEntry active={true} title={"new task"} />
+                        <TodoEntry active={false} title={"old task"} />
+                    </ul>
+                </section>
+            </div>
+        );
     }
 }
 

@@ -18,6 +18,7 @@ button {
     appearance: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
 }
 
 body {
@@ -376,4 +377,9 @@ html .clear-completed:active {
     .filters {
         bottom: 10px;
     }
+}
+
+
+input[type="checkbox"] {
+    cursor: pointer;
 }
