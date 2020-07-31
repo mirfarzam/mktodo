@@ -18,6 +18,7 @@ button {
     appearance: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
 }
 
 body {
@@ -312,6 +313,7 @@ body {
 
 .filters li a:hover {
     border-color: rgba(175, 47, 47, 0.1);
+    cursor: pointer;
 }
 
 .filters li a.selected {
@@ -376,4 +378,9 @@ html .clear-completed:active {
     .filters {
         bottom: 10px;
     }
+}
+
+
+input[type="checkbox"] {
+    cursor: pointer;
 }
