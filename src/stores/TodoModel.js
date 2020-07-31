@@ -7,9 +7,10 @@ export default class TodoModel {
     @observable active
 
     constructor(store, title) {
-        this.id = ((new Date()).getMilliseconds()).toString()
+        this.id = title + (Math.floor((new Date())/1000)).toString()
         this.store = store
         this.title = title
+        this.active = true
     }
 
     @action

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {observer} from 'mobx-react'
 import './App.css';
-import todoStore from "./stores/TodoStore";
-import TodoEntry from './components/TodoEntry'
+import TodoList from './components/TodoList'
+import TodoEntry from "./components/TodoEntry";
+import TodoFooter from "./components/TodoFooter";
 
 @observer
 class App extends Component {
@@ -11,18 +12,10 @@ class App extends Component {
             <div className={"todoapp"} id={"todoapp"}>
                 <header className={"header"}>
                     <h1>todo</h1>
-                    <input
-                        type={"text"}
-                        className={"new-todo"}
-                        placeholder={"What need to be done?"}
-                    />
+                    <TodoEntry />
                 </header>
-                <section className={"main"}>
-                    <ul className={"todo-list"}>
-                        <TodoEntry active={true} title={"new task"} />
-                        <TodoEntry active={false} title={"old task"} />
-                    </ul>
-                </section>
+                <TodoList/>
+                <TodoFooter />
             </div>
         );
     }

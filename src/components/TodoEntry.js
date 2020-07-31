@@ -1,30 +1,37 @@
 import React, {Component} from 'react'
+import todoStore from '../stores/TodoStore'
 
 class TodoEntry extends Component{
 
-    // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
+        this.state = {
+            value : ''
+        }
         // Don't call this.setState() here!
         this.state = { active : this.props.active };
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
+    handleKeyDown (e) {
+        if(e.keyCode !== 13) return;
+        if(!this.state.value) return;
+        e.preventDefault()
+        todoStore.addTodo(this.state.value)
         this.setState({
-            active : !this.state.active
+            value : ''
         })
     }
 
     render() {
         return (
-            <li className={`${this.state.active ? "" : "completed"}`}>
-                <div className={"view"}>
-                    <input type={"checkbox"} className={"toggle"} value={"checked"} defaultChecked={!this.state.active} onClick={()=>this.handleClick()}/>
-                    <label>{this.props.title}</label>
-                    <button className={"destroy"} />
-                </div>
-            </li>
+            <input
+                type={"text"}
+                className={"new-todo"}
+                placeholder={"What need to be done?"}
+                value = {this.state.value}
+                onChange={event => this.setState({value: event.target.value})}
+                onKeyDown={event => this.handleKeyDown(event) }
+            />
         );
     }
 }
